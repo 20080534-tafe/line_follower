@@ -1,0 +1,5 @@
+simple_avoid:
+  ros__parameters:
+    forward_speed: 3.0
+    turn_speed: 2.0
+    wall_threshold: 0.05
