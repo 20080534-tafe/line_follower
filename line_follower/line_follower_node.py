@@ -40,3 +40,14 @@ class AvoidWallNode(Node):
         self.timer = self.create_timer(0.1, self.control_loop)
         self.get_logger().info("Avoid wall node started.")  # Indicate that the node started
 
+    def sensor_callback(self, msg):
+        """Callback function to process the sensor data.""" # Added a docstring
+        self.last_sensor_value = msg.range  # Store the sensor value
+        self.get_logger().info(f"Sensor value: {self.last_sensor_value} m")  # Log the sensor value
+
+        # If the sensor detects an obstacle within the distance, set the flag to True
+        if self.last_sensor_value < self.wall_threshold:
+            self.obstacle_detected = True
+        else:
+            self.obstacle_detected = False  # No obstacle detected
+
