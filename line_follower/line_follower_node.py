@@ -90,3 +90,13 @@ class AvoidWallNode(Node):
 
         # Publish the velocity command to the robot
         self.cmd_pub.publish(twist_stamped)
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = AvoidWallNode()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
